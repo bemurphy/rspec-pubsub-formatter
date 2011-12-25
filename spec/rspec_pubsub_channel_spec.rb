@@ -14,7 +14,7 @@ describe RSpecPubsub::Channel do
   end
 
   it "allows changing the channel name via the class" do
-    RSpecPubsub::Channel.name = "blam"
+    RSpecPubsub::Channel.channel_name = "blam"
     redis.should_receive(:publish).with("blam", status.to_json)
     subject.publish(status)
   end

@@ -72,9 +72,9 @@ module RSpecPubsub
     attr_reader :redis
 
     class << self
-      attr_writer :name
-      def name
-        @name || "pubsub_formatter"
+      attr_writer :channel_name
+      def channel_name
+        @channel_name || "pubsub_formatter"
       end
     end
 
@@ -83,7 +83,7 @@ module RSpecPubsub
     end
 
     def publish(status)
-      redis.publish(self.class.name, status.to_json)
+      redis.publish(self.class.channel_name, status.to_json)
     end
   end
 end
